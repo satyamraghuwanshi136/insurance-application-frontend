@@ -1,0 +1,68 @@
+<div class="container d-flex align-item-center justify-content-center">
+    <div class="card" style="width: 100%;">
+        <div class="card-body ">
+            
+            <form [formGroup]="familyForm" (ngSubmit)="registerFamilyDetails()">
+                
+                    <div class="">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text"
+                            [ngClass]="familyForm.controls['name'].invalid && familyForm.controls['name'].touched ? 'is-invalid':''"
+                            class="form-control" name="name" placeholder="name" formControlName="name" id="name">
+                        <div class="invalid-feedback">
+                            Please enter a name.
+                        </div>
+                    </div>
+                    <div class=" mt-3">
+                        <label for="dob" class="form-label">Date of birth</label>
+                        <input type="date" min="1960-01-01" max="2021-01-01"
+                            [ngClass]="familyForm.controls['dob'].invalid && familyForm.controls['dob'].touched ? 'is-invalid':''"
+                            class="form-control" name="dob" formControlName="dob" id="dob">
+                        <div class="invalid-feedback">
+                            Please enter a Date of birth.
+                        </div>
+                    </div>
+                    <div class=" mt-3">
+                        <label class="form-label">Relationship: </label>
+                        <select  [ngClass]="familyForm.controls['relationship'].invalid && familyForm.controls['relationship'].touched ? 'is-invalid':''"
+                        class="form-select  form-select-md" aria-label=".form-select-lg example"
+                            formControlName="relationship" name="relationship">
+                            <option selected value="">select</option>
+                            <option value="son">son</option>
+                            <option value="daughter">daughter</option>
+                            <option value="brother">brother</option>
+                            <option value="sister">sister</option>
+                            <option value="father">father</option>
+                            <option value="mother">mother</option>
+                            <option value="wife">wife</option>
+                            <option value="husband">husband</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a type.
+                        </div>
+                    </div>
+                
+                    <div class=" mt-3">
+                        <label for="mobileNo" class="form-label">mobile Number</label>
+                        <input type="text"
+                            [ngClass]="familyForm.controls['mobileNo'].invalid && familyForm.controls['mobileNo'].touched ? 'is-invalid':''"
+                            class="form-control" placeholder="mobile number" name="mobileNo" formControlName="mobileNo" id="mobileNo">
+                        <div class="invalid-feedback">
+                            Please enter a mobile number.
+                        </div>
+                    </div>
+                    <div class=" mt-3">
+                    <label for="idProof" class="form-label">ID Proof (Adhaar Card Number)</label>
+                        <input type="text" minlength="12" maxlength="12"
+                            [ngClass]="familyForm.controls['idProof'].invalid && familyForm.controls['idProof'].touched ? 'is-invalid':''"
+                            class="form-control" name="idProof" placeholder="adhar card number" formControlName="idProof" id="idProof">
+                        <div class="invalid-feedback">
+                            Please enter a valid Adhaar Number.
+                        </div>
+                    </div>
+                
+                    <button type="submit" [disabled]="!familyForm.valid || isCalling" class="mt-3 btn btn-success w-100" data-bs-dismiss="modal" aria-label="Close">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

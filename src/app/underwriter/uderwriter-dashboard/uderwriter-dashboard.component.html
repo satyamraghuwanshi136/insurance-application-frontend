@@ -1,0 +1,10 @@
+<div class="container-fluid ">
+    <div class="row flex-nowrap ">
+         <!-- Sidebar  -->
+         
+        <app-sidebar [sidebarLinks]="sidebarUderwriterLinks" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 text-white bg-dark sidebar"></app-sidebar>
+        <div class="col py-3 myCockpitbg">
+           <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

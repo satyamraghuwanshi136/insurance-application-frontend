@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center my-3">
+            <div class="lc-block">
+                <h2 class="mb-0 fw-bold">View <span class="text-success">Purchases</span></h2>
+            </div><!-- /lc-block -->
+        </div>
+    </div>
+    
+    <hr>
+    <div class="row mt-4">
+        <h4>Successfull Purchases</h4>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="table-dark">
+                    <!-- <th scope="col">ID</th> -->
+                    <th scope="col">Purchase Id</th>
+                    <th scope="col">Policy Name</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Premium</th>
+                    <th scope="col">Pay Cycle</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let purchase of purchasesSuccessful">
+                    <th scope="row">{{ purchase.purchaseId }}</th>
+                    <td>{{ purchase.policy.name }}</td>
+                    <td>{{ purchase.customer.name }}</td>
+                    <td>{{ purchase.premium }}</td>
+                    <td>{{ purchase.payCycle }}</td>
+                    <td><span class="badge bg-success">{{ purchase.status }}</span></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row mt-4">
+        <h4>Pending Purchases</h4>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="table-dark">
+                    <!-- <th scope="col">ID</th> -->
+                    <th scope="col">Purchase Id</th>
+                    <th scope="col">Policy Name</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Premium</th>
+                    <th scope="col">Pay Cycle</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let purchase of purchasesPending">
+                    <th scope="row">{{ purchase.purchaseId }}</th>
+                    <td>{{ purchase.policy.name }}</td>
+                    <td>{{ purchase.customer.name }}</td>
+                    <td>{{ purchase.premium }}</td>
+                    <td>{{ purchase.payCycle }}</td>
+                    <td><span class="badge bg-danger">{{ purchase.status }}</span></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel">{{ modalSuccess ? 'Deleted successfully': 'Error accured! can not delete try again'}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,104 @@
+<div class="container col-xxl-8 py-4 hero" >
+    <div class="row flex-lg-row align-items-top py-5 pe-3 rounded mt-2" style="background-color: rgba(203, 238, 221, 0.48);">
+        
+        <div class="col-lg-7">
+            <div class="lc-block mb-3">
+                <div editable="rich">
+                    <h2 class="fw-bold">Find the right <span class="text-success">insurance </span> for you.</h2>
+                </div>
+            </div>
+
+            <div class="lc-block mb-3 ms-5">
+                <img src="../../assets/images/addPolicy.svg" width="55%" alt="">
+            </div>
+        </div>
+
+        <div class="col-10 col-sm-8 col-lg-5 bg-white py-3 rounded ms-3 ms-lg-0" >
+            <form [formGroup]="userInfo" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" readonly formControlName="name" class="form-control" id="name" name="name" placeholder="enter name"
+                  [ngClass]="userInfo.controls['name'].invalid && userInfo.controls['name'].touched ? 'is-invalid':''">
+                                    <div class="invalid-feedback">
+                                        Please enter a name.
+                                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of birth:</label>
+                    <input type="date" min="1960-01-01" max="2002-01-01" formControlName="dob" class="form-control" id="dob" name="dob"
+                    [ngClass]="userInfo.controls['dob'].invalid && userInfo.controls['dob'].touched ? 'is-invalid':''">
+                                    <div class="invalid-feedback">
+                                        Please enter a date of birth.
+                                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="income" class="form-label">Income:</label>
+                    <input type="text" formControlName="income" class="form-control" id="income" name="income" placeholder="enter income"
+                    [ngClass]="userInfo.controls['income'].invalid && userInfo.controls['income'].touched ? 'is-invalid':''">
+                                      <div class="invalid-feedback">
+                                          Please enter a income.
+                                      </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="numberOfDependents" class="form-label">Number Of Dependents:</label>
+                    <input type="number" formControlName="numberOfDependents" class="form-control" id="numberOfDependents" name="numberOfDependents" placeholder="Number Of Dependents"
+                    [ngClass]="userInfo.controls['numberOfDependents'].invalid && userInfo.controls['numberOfDependents'].touched ? 'is-invalid':''">
+                                      <div class="invalid-feedback">
+                                          Please enter a value.
+                                      </div>
+                  </div>
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <div class="form-check form-check-inline ms-3">
+                        <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="male" value="male" checked
+                        [ngClass]="userInfo.controls['gender'].invalid && userInfo.controls['gender'].touched ? 'is-invalid':''">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="female" value="female"
+                        [ngClass]="userInfo.controls['gender'].invalid && userInfo.controls['gender'].touched ? 'is-invalid':''">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                                    <div class="invalid-feedback">
+                                        Please select gender.
+                                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type:</label>
+                    <div class="form-check form-check-inline ms-3">
+                        <input class="form-check-input" formControlName="type" type="radio" name="type" id="individual" value="individual" checked
+                        [ngClass]="userInfo.controls['type'].invalid && userInfo.controls['type'].touched ? 'is-invalid':''">
+                        <label class="form-check-label" for="individual">Individual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="type" type="radio" name="type" id="family" value="family"
+                        [ngClass]="userInfo.controls['type'].invalid && userInfo.controls['type'].touched ? 'is-invalid':''">
+                        <label class="form-check-label" for="family">Family</label>
+                    </div>
+                                    <div class="invalid-feedback">
+                                        Please select type.
+                                    </div>
+                </div>
+                <!-- <ng-template [ngIf]="userInfo.value['type'] === 'family'">
+                    <label class="form-label">Select members: </label>
+                    <select  [ngClass]="userInfo.controls['numberOfDependents'].invalid && userInfo.controls['numberOfDependents'].touched ? 'is-invalid':''"
+                    class="form-select  form-select-md  mb-3" aria-label=".form-select-lg example"
+                        formControlName="numberOfDependents" name="numberOfDependents">
+                        <option selected value="">--select--</option>
+                        <option value="1">me + spouse</option>
+                        <option value="2">me + parents</option>
+                        <option value="2">me + spouse & 1 kid</option>
+                        <option value="3">me + spouse & 2 kid</option>
+                        <option value="4">me + spouse & 3 kid</option>
+                        <option value="5">me + spouse & 4 kid</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a type.
+                    </div>
+                </ng-template> -->
+                
+                <button type="submit" class="btn btn-success" [disabled]="!userInfo.valid">View Plans</button>
+              </form>
+        </div>
+    </div>
+</div>

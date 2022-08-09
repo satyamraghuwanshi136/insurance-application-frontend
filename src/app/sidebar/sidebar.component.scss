@@ -1,0 +1,21 @@
+.sidebar{
+    font-family: 'Montserrat', sans-serif;
+}
+
+a.nav-link{
+    text-decoration: none;
+    color: white;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:#ffffff;
+    height: 1.5px;
+  }
+
+.active{
+    background-color: #ffffff;
+}

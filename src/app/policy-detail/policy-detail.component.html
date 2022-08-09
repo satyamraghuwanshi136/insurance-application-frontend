@@ -1,0 +1,28 @@
+
+<div class="container py-4">
+    <button class="btn btn-sm btn-secondary mb-2" (click)="goBack()"><i class="bi bi-chevron-left"></i> go back</button>
+    <div class="row">
+        <div class="col-md-7">
+            <h3>Policy <span class="text-success">details: </span> </h3>
+            <hr>
+            <div>
+                <p class="fw-bold">Name: <span class="fw-normal"> {{ policy.name }} </span></p>
+                <p class="fw-bold">Tenure: <span class="fw-normal"> {{ policy.tenure }} </span></p>
+                <p class="fw-bold" *ngIf="isAdmin">Base Amount: <span class="fw-normal"> {{ policy.amount | number}}/- </span></p>
+                <p class="fw-bold">Type: <span class="fw-normal"> {{ policy.type }} </span></p>
+                <p class="fw-bold">Sub Type: <span class="fw-normal"> {{ policy.subtype }} </span></p>
+                <p class="fw-bold" *ngIf="isAdmin">Number of dependents: <span class="fw-normal"> {{ policy.numberOfDependent }} </span></p>
+                <p class="fw-bold" *ngIf="isAdmin">Extra for age slap: <span class="fw-normal"> {{ policy.extraForAgeSlap }} </span></p>
+                <p class="fw-bold">Max age: <span class="fw-normal"> {{ policy.maxAge }} </span></p>
+                <p class="fw-bold">Min age: <span class="fw-normal"> {{ policy.minAge }} </span></p>
+                <p class="fw-bold">Description: <span class="fw-normal"> {{ policy.description }} </span></p>
+            </div>
+            <hr>
+            <div class="btn btn-success" *ngIf="header" (click)="buyNow(policy)">Buy now</div>
+        </div>
+        <div class="col-md-5 d-flex align-item-center justify-content-center">
+            <img src="../../assets/images/plans1.svg" class="w-50" alt="">
+        </div>
+
+    </div>
+</div>

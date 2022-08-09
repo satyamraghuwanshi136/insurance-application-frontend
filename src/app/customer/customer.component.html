@@ -1,0 +1,15 @@
+<div class="container mt-4 rounded py-3" style="background-color: #eee;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-group-sm btn-group" (click)="onButtonGroupClick($event)" role="group" aria-label="Basic outlined example">
+                <button type="button" routerLink="/customer/details" class="btn btn-outline-success active">My details</button>
+                <button type="button" routerLink="/customer/policies" class="btn btn-outline-success">my policies</button>
+              </div>
+        </div>
+        <div class="col-md-12 mt-4">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+        
+</div>
+

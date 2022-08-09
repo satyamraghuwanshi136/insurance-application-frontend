@@ -1,0 +1,25 @@
+<div class="">
+    <h1 class="text-center fw-bolder py-3">Add new <span class="text-success">policy</span></h1>
+    <div class="row align-item-center justify-content-center">
+        <div class="card col-md-10 col-sm-12">
+            <div class="card-body">
+                <form [formGroup]="purchaseForm" (ngSubmit)="purchase()">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Policy Name</label>
+                                <input type="text"
+                                [ngClass]="purchaseForm.controls['name'].invalid && purchaseForm.controls['name'].touched ? 'is-invalid':''"
+                                formControlName="name" class="form-control" name="name"
+                                    placeholder="LIC Saral jivan bima">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid name. <br>(Only whitespace is not allowed)
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

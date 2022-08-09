@@ -1,0 +1,189 @@
+<div class="">
+    <button class="btn btn-sm btn-secondary" (click)="goBack()"><i class="bi bi-chevron-left"></i> go back</button>
+    <h1 class="text-center fw-bolder py-3">Add new <span class="text-success">policy</span></h1>
+    <div class="row align-item-center justify-content-center">
+        <div class="card col-md-10 col-sm-12">
+            <div class="card-body">
+                <form [formGroup]="policyForm" (ngSubmit)="createPolicy()">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Policy Name</label>
+                                <input type="text"
+                                [ngClass]="policyForm.controls['name'].invalid && policyForm.controls['name'].touched ? 'is-invalid':''"
+                                formControlName="name" class="form-control" name="name"
+                                    placeholder="LIC Saral jivan bima">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid name. <br>(Only whitespace is not allowed)
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Tenure</label>
+                                <input min="1" max="99" [ngClass]="policyForm.controls['tenure'].invalid && policyForm.controls['tenure'].touched ? 'is-invalid':''" type="number" formControlName="tenure" name="tenure" class="form-control"
+                                    placeholder="12">
+                                    <div class="invalid-feedback">
+                                        Please enter a tenure. only 1 to 99 numbers are allowed.
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Amount</label>
+                                <input [ngClass]="policyForm.controls['amount'].invalid && policyForm.controls['amount'].touched ? 'is-invalid':''" type="number" formControlName="amount" name="amount" class="form-control"
+                                    placeholder="Rs.1200">
+                                    <div class="invalid-feedback">
+                                        Please enter a amount.
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Min Income</label>
+                                <input [ngClass]="policyForm.controls['minIncome'].invalid && policyForm.controls['minIncome'].touched ? 'is-invalid':''" type="number" formControlName="minIncome" name="minIncome" class="form-control"
+                                    placeholder="Rs.1,20,000">
+                                    <div class="invalid-feedback">
+                                        Please enter a amount.
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Type</label>
+                                <select  [ngClass]="policyForm.controls['type'].invalid && policyForm.controls['type'].touched ? 'is-invalid':''"
+                                class="form-select  form-select-md  mb-3" aria-label=".form-select-lg example"
+                                    formControlName="type" name="type">
+                                    <option selected value="">--select insurance type--</option>
+                                    <option value="life">Life</option>
+                                    <option value="dental">Dental</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a type.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Min Age</label>
+                                <input min="1" max="99" [ngClass]="policyForm.controls['minAge'].invalid && policyForm.controls['minAge'].touched ? 'is-invalid':''" type="number" formControlName="minAge" name="minAge" class="form-control"
+                                    >
+                                    <div class="invalid-feedback">
+                                        Please enter a valid minimum age.
+                                    </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Max Age</label>
+                                <input min="1" max="99" [ngClass]="policyForm.controls['maxAge'].invalid && policyForm.controls['maxAge'].touched ? 'is-invalid':''" type="number" formControlName="maxAge" name="maxAge" class="form-control"
+                                    >
+                                    <div class="invalid-feedback">
+                                        Please enter a valid maximum age.
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label class="form-label">Sub Type</label>
+                            <div>
+                                <input [ngClass]="policyForm.controls['subtype'].invalid && policyForm.controls['subtype'].touched ? 'is-invalid':''" class="form-check-input" type="radio" formControlName="subtype" name="subtype"
+                                    id="flexRadioDefault1" value="individual">
+                                <label class="form-check-label ms-2" for="subType">
+                                    Individual
+                                </label>
+                                <input [ngClass]="policyForm.controls['subtype'].invalid && policyForm.controls['subtype'].touched ? 'is-invalid':''" class="form-check-input mx-2" formControlName="subtype" type="radio"
+                                    name="subtype" id="flexRadioDefault2" value="family" checked>
+                                <label class="form-check-label" for="flexRadioDefault2" value="family">
+                                    Family plan
+                                </label>
+                                <div class="invalid-feedback">
+                                    Please enter a sub type.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Base Premium.(BP)</label>
+                                <input [ngClass]="policyForm.controls['basePremium'].invalid && policyForm.controls['basePremium'].touched ? 'is-invalid':''" type="number" formControlName="basePremium" name="basePremium"
+                                    class="form-control" placeholder="Rs.1200">
+                                    <div class="invalid-feedback">
+                                        Please enter a Base Premium.
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Number Of
+                                        Dependents</label>
+                                    <input [ngClass]="policyForm.controls['numberOfDependent'].invalid && policyForm.controls['numberOfDependent'].touched ? 'is-invalid':''" type="number" formControlName="numberOfDependent"
+                                        name="numberOfDependent" class="form-control" placeholder="4">
+                                        <div class="invalid-feedback">
+                                            Please enter a value.
+                                        </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Extra Premium For Every Age
+                                        Slap(% of BP)</label>
+                                    <input [ngClass]="policyForm.controls['extraForAgeSlap'].invalid && policyForm.controls['extraForAgeSlap'].touched ? 'is-invalid':''" type="number" formControlName="extraForAgeSlap" name="extraForAgeSlap"
+                                        class="form-control" placeholder="4">
+                                        <div class="invalid-feedback">
+                                            Please enter a value.
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                        </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                <textarea [ngClass]="policyForm.controls['description'].invalid && policyForm.controls['description'].touched ? 'is-invalid':''"
+                                 class="form-control" id="exampleFormControlTextarea1"
+                                    formControlName="description" name="description" rows="3"></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter a description.
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button *ngIf="policyId === 0" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success" [disabled]="!policyForm.valid">Create Policy</button>
+                        <button *ngIf="policyId !== 0"  type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark" [disabled]="!policyForm.valid">Update Policy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel">{{ modalTitle }}</h5>
+          <button type="button" routerLink="/admin/dashboard/manage-policy" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" [ngClass]="modalSuccess?'text-success':'text-danger'">
+            {{ modalMsg }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" routerLink="/admin/dashboard/manage-policy" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

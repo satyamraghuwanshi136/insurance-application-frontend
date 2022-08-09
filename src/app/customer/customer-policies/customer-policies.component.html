@@ -1,0 +1,31 @@
+<div class="row">
+   <div class="col-md-12">
+    <h6 class="text-capitalize fw-bold text-muted ms-0">my policies</h6>
+    <table class="table table-striped mt-2">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Policy Name</th>
+                <th scope="col">Premium</th>
+                <th scope="col">Pay Cycle</th>
+                <th scope="col">Type</th>
+                <th scope="col">Nominee Name</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let purchase of purchases">
+                <td>{{ purchase.policy.name }}</td>
+                <td>{{ purchase.premium | number }}/-</td>
+                <td>{{ purchase.payCycle }}</td>
+                <td>{{ purchase.policy.subtype }}</td>
+                <td>{{ purchase.nominee.name }}</td>
+                <td>
+                    <span class="badge bg-danger" *ngIf="purchase.status == 'Pending'">Sent for review</span>
+                    <span class="badge bg-success" *ngIf="purchase.status == 'Auto Approved'">Approved</span>
+                    <span class="badge bg-success" *ngIf="purchase.status == 'Approved By Underwriter'">Approved</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   </div>
+</div>

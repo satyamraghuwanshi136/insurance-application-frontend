@@ -1,0 +1,174 @@
+<div class="container py-5 my-4 bg-light text-dark text-center plans-section">
+	<div class="row pt-4 mb-2">
+		<div class="col-md-12">
+			<div class="lc-block">
+				<div editable="rich">
+					<p class="h5 text-muted">Insurance Plan</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center mb-4">
+
+		<div class="lc-block col-xl-8">
+			<h1 editable="inline" class="display-6 fw-bold">Get the <span class="text-success">right insurance</span> to
+				meet your needs.</h1>
+		</div>
+
+	</div>
+	<div class="row justify-content-center mb-4">
+
+		<div class="lc-block col-xl-6 lh-lg">
+			<div editable="rich">
+				<p class="">&nbsp;Your health and wellbeing is important to us. when it comes to staying well,
+					physically, emotionaly and financially. we are with you.
+				</p>
+			</div>
+		</div>
+
+	</div>
+	<div class="row pb-4">
+		<div class="col-md-12 d-">
+			<div class="lc-block d-grid gap-3 d-md-block">
+				<a class="btn btn-success me-md-2" routerLink="/policy" role="button">See plans</a>
+
+				<a class="btn btn-outline-secondary" routerLink="/contact" role="button">Contact us</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-4" >
+		<div class="col-md-3 col-sm-6">
+			<div class="lc-block">
+				<img class="img-fluid mx-auto d-block mb-2" src="../../../assets/images/features1.svg"
+					style="height:10vh">
+			</div>
+			<div class="lc-block text-center">
+				<div editable="rich">
+
+					<h5>All Round Protection</h5>
+
+					<p class="text-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="lc-block">
+				<img class="img-fluid mx-auto d-block mb-2" src="../../../assets/images/features1.svg"
+					style="height:10vh">
+			</div>
+			<div class="lc-block text-center">
+				<div editable="rich">
+
+					<h5>24 X 7 Support</h5>
+
+					<p class="text-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="lc-block">
+				<img class="img-fluid mx-auto d-block mb-2" src="../../../assets/images/features1.svg"
+					style="height:10vh">
+			</div>
+			<div class="lc-block text-center">
+				<div editable="rich">
+
+					<h5>Return of premium paid</h5>
+
+					<p class="text-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="lc-block">
+				<img class="img-fluid mx-auto d-block mb-2" src="../../../assets/images/features1.svg"
+					style="height:10vh">
+			</div>
+			<div class="lc-block text-center">
+				<div editable="rich">
+
+					<h5>Survival Benefits</h5>
+
+					<p class="text-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container plans-section py-5">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<div class="lc-block">
+				<p class="h5 text-muted">Plan</p>
+				<h1 class="fw-bolder" editable="inline">Best recommended <span class="text-success">Insurance </span>
+				</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-md-4 mt-4" *ngFor="let plan of plans">
+		<div class="p-lg-5 p-md-4 shadow bg-white border border-1">
+			<div class="lc-block mb-2">
+				<p class="text-muted text-capitalize">{{ plan.subtype }} plan</p>
+				<img alt="" class="img-fluid" src="../../../assets/images/plans1.svg" style="height:10vh">
+				<h4 class="my-3" editable="inline">{{ plan.name }}</h4>
+
+				<p class="text-muted text-capitalize">Type: {{ plan.type }}</p>
+				<p editable="inline">{{ (plan.description.length>6)? (plan.description |
+					slice:0:25)+'...':(plan.description) }}&nbsp;</p>
+
+				<a class="btn btn-success btn-sm me-2 mb-2" routerLink="/policy" role="button">Buy now</a>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- <div class="row mt-4">
+		<div class="col-md-4">
+			<div class="p-lg-5 p-4 shadow">
+				<div class="lc-block mb-4"><img alt="" class="img-fluid" src="../../../assets/images/plans1.svg"
+						style="height:10vh">
+
+
+					<h4 class="my-3" editable="inline"></h4>
+					<p editable="inline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a lacus
+						est.&nbsp;</p>
+
+
+					<a class="btn btn-success btn-sm" href="#" role="button">Read more</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="p-lg-5 p-4 shadow">
+				<div class="lc-block mb-4">
+					<img alt="" class="img-fluid" src="../../../assets/images/plans1.svg" style="height:10vh">
+
+
+					<h4 class="my-3" editable="inline"></h4>
+					<p editable="inline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a lacus
+						est.&nbsp;</p>
+
+
+					<a class="btn btn-success btn-sm" href="#" role="button">Read more</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="p-lg-5 p-4 shadow">
+				<div class="lc-block mb-4">
+					<img alt="" class="img-fluid" src="../../../assets/images/plans1.svg" style="height:10vh">
+
+					<h4 class="my-3" editable="inline"></h4>
+					<p editable="inline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a lacus
+						est.&nbsp;</p>
+
+					<a class="btn btn-success btn-sm" href="#" role="button">Read more</a>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</div>

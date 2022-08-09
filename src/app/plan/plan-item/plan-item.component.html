@@ -1,0 +1,15 @@
+
+    <div class="px-3 py-3 shadow bg-white border border-1" >
+        <div class="lc-block mb-2" >
+            <p class="text-muted text-capitalize">Only at <span class="text-white px-2 py-2 rounded" style="background-color: rgba(220, 53, 70, 0.877);">{{ premium | number  }}/- month</span> </p>
+            <p class="text-muted text-capitalize">{{ plan.subtype }} plan</p>
+            <img alt="" class="img-fluid" src="../../../assets/images/plans1.svg" style="height:10vh">
+            <h4 class="my-3" editable="inline">{{ plan.name }}</h4>
+
+            <p class="text-muted text-capitalize">Type: {{ plan.type }}</p>
+            <p editable="inline">{{ (plan.description.length>6)? (plan.description | slice:0:25)+'...':(plan.description) }}&nbsp;</p>
+
+            <a class="btn btn-success btn-sm me-2 " (click)="buyNow(plan)" role="button">Buy now</a>
+            <a class="btn btn-outline-secondary btn-sm me-2" (click)="showDetails(plan)" role="button">View Details</a>
+        </div>
+    </div>

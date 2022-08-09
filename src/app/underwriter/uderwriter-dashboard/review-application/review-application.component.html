@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center my-3">
+            <div class="lc-block">
+                <h2 class="mb-0 fw-bold">Review <span class="text-success">Applications</span></h2>
+            </div><!-- /lc-block -->
+        </div>
+    </div>
+    
+    <hr>
+
+    <div class="row mt-4">
+        <h4>Pending Applications</h4>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="table-dark">
+                    <!-- <th scope="col">ID</th> -->
+                    <th scope="col">Purchase Id</th>
+                    <th scope="col">Policy Name</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Premium</th>
+                    <th scope="col">Pay Cycle</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let purchase of purchasesPending">
+                    <th scope="row">{{ purchase.purchaseId }}</th>
+                    <td><a (click)="showDetails(purchase.policy.policyId)" class="btn-link" style="cursor: pointer;">{{ purchase.policy.name }}</a> </td>
+                    <td><a data-bs-toggle="modal" data-bs-target="#customerModal" (click)="showCustomerDetails(purchase.customer.custId)" class="btn-link" style="cursor: pointer;">{{ purchase.customer.name }}</a></td>
+                    <td>{{ purchase.premium | number }}/-</td>
+                    <td>{{ purchase.payCycle }}</td>
+                    <td><span class="badge bg-danger">{{ purchase.status }}</span></td>
+                    <td>
+                        <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="approve(purchase.purchaseId)" class="btn mb-1 btn-sm btn-success me-2">Approve</button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="reject(purchase.purchaseId)">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4>Customer Information</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-capitalize">
+            <span class="fw-bold"> name: </span> {{ customerDetails.customer.name }} <br>
+            <span class="fw-bold"> contact: </span> {{ customerDetails.customer.contactNo }} <br>
+            <span class="fw-bold"> email: </span> <span class="text-lowercase">{{ customerDetails.customer.email | lowercase }}</span>  <br>
+            <span class="fw-bold"> gender: </span> {{ customerDetails.gender }} <br>
+            <span class="fw-bold"> dob: </span> {{ customerDetails.dob | date }} <br>
+            <span class="fw-bold"> nationality: </span> {{ customerDetails.nationality }} <br>
+            <span class="fw-bold"> occupation: </span> {{ customerDetails.occupation }} <br>
+            <span class="fw-bold"> income: </span> {{ customerDetails.income }} <br>
+            <span class="fw-bold"> Place Of Birth: </span> {{ customerDetails.placeOfBirth }} <br>
+            <span class="fw-bold"> idProof (Adhaar Card Number): </span> {{ customerDetails.idProof }} <br>
+            <span class="fw-bold"> relationship: </span> {{ customerDetails.relationship }} <br>
+            <span class="fw-bold"> Care of name: </span> {{ customerDetails.coName }} <br>
+            <span class="fw-bold"> street: </span> {{ customerDetails.street }} <br>
+            <span class="fw-bold"> locality: </span> {{ customerDetails.locality }} <br>
+            <span class="fw-bold"> area: </span> {{ customerDetails.area }} <br>
+            <span class="fw-bold"> city: </span> {{ customerDetails.city }} <br>
+            <span class="fw-bold"> state: </span> {{ customerDetails.state }} <br>
+            <span class="fw-bold"> pincode:</span> {{ customerDetails.pincode }} <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel" >{{ modalSuccess ? 'Approved successfully': modalFailure ? 'Error Accured! Try Again' : 'Approving...'}}</h5>
+          <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel" *ngIf="modalReject">{{ modalReject ? 'Rejected successfully': modalFailure ? 'Error Accured! Try Again' : 'Rejecting...'}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,35 @@
+<div class="sidebar">
+    <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
+        <a href="/" class="d-flex align-items-center p-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-4 d-none d-sm-inline">Dashboard</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column w-100 mb-sm-auto mb-0 align-items-center align-items-sm-start text-decoration-none mt-2"
+            id="menu">
+
+            <li class="nav-item mb-2 w-100" *ngFor="let item of sidebarLinks" >
+                <a  class="nav-link" [routerLink]="[ item[0] ]">
+                    <i class="bi bi-pencil-square"></i> 
+                    <span class="ms-1 d-none d-sm-inline"> {{ item[1] }}</span>
+                </a>
+            </li>
+            <!-- <li class="nav-item mb-2">
+                <a href="#" class="nav-link">
+                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+            </li>
+            
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link">
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+            </li> -->
+        </ul>
+
+        <hr>
+        <div class="dropdown pb-4">
+                <a (click)="logout()"  class="btn btn-light">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span class="ms-1 d-none d-sm-inline">Logout</span> 
+                </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+
+<div class="container plans-section py-4">
+	
+	<div class="row mt-4">
+		<div class="col-md-12 text-center">
+			<div class="lc-block">
+				<p class="h6 text-muted">Insurance Plan</p>
+				<h2 class="myh2" editable="inline">Our Insurance <span class="text-success">Plans</span> </h2>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-4 rounded d-flex justify-content-end py-3" style="background-color: rgba(203, 238, 221, 0.48);">
+		<div class="row">
+			<div class="col-md">Name: <span class="fw-bold">{{ userInfo.name }}</span></div>
+			<div class="col-md">Date of birth: <span class="fw-bold">{{ userInfo.dob }}</span></div>
+			<div class="col-md">gender: <span class="fw-bold">{{ userInfo.gender }}</span></div>
+			<div class="col-md">Type: <span class="fw-bold">{{ userInfo.type }}</span></div>
+			<div class="col-md">Income: <span class="fw-bold">{{ userInfo.income }}</span></div>
+		</div>
+		<div class="row me-md-5 pe-md-4 mt-2">
+			<div class="col d-flex justify-content-end">
+				<button routerLink="/policy/edit" class="btn btn-sm btn-secondary"><i class="bi bi-pencil-square"></i> Change</button>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="row text-end mt-4">
+		<p class="h6 text-muted">filter plans <i class="bi bi-funnel"></i></p>
+		<div class="col-md-12 d-flex align-item-center justify-content-end">
+			<div class="btn-group-sm btn-group" (click)="onButtonGroupClick($event)" role="group" aria-label="Basic outlined example">
+				<button type="button" (click)="getPolicies()" class="btn btn-outline-success active">All</button>
+				<button type="button" (click)="getPolicyBySubtype('family')" class="btn btn-outline-success">Family</button>
+				<button type="button" (click)="getPolicyBySubtype('individual')" class="btn btn-outline-success">Individual</button>
+				<button type="button" (click)="getPolicyByType('life')" class="btn btn-outline-success">Life</button>
+				<button type="button" (click)="getPolicyByType('dental')" class="btn btn-outline-success">Dental</button>
+			  </div>
+		</div>
+	</div> -->
+	<div class="row mt-4">
+		<div *ngIf="!hasPlans">
+			<h4 class="text-danger text-center">No Plans</h4>
+		</div>
+		<app-plan-item *ngFor="let plan of plans" [plan]="plan" class="col-md-4 mb-4"></app-plan-item>
+		
+		<div><button routerLink="/all-policy" class="btn btn-secondary">view all policies</button></div>
+		<div *ngIf="!(hasError === '')"><div class="text-danger"><h6 class="">{{ hasError }}</h6></div></div>
+	</div>
+</div>

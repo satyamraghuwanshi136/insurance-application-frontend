@@ -1,0 +1,116 @@
+<form [formGroup]="purchaseForm" >
+    <div class="container py-4">
+        <div class="row">
+            
+            <div class="col-md-7">
+                <div class="mt-3">
+                    <p *ngIf="this.purchaseForm.value.payCycle == '' || this.purchaseForm.value.payCycle == 'monthly'" class="text-muted text-capitalize">Your Premium: <span class="text-white px-2 py-2 rounded" style="background-color: rgba(220, 53, 70, 0.877);">{{ premium | number  }}/- month</span> </p>
+                    <p *ngIf="this.purchaseForm.value.payCycle == 'yearly'" class="text-muted text-capitalize">Your Premium: <span class="text-white px-2 py-2 rounded" style="background-color: rgba(220, 53, 70, 0.877);">{{ premium*12 | number  }}/- yearly</span> </p>
+                </div>
+                <form [formGroup]="purchaseForm" (ngSubmit)="purchase()">
+                    
+                    <div class="mt-4">
+                        <label class="form-label">Select Nominee</label>
+                        <select [ngClass]="purchaseForm.controls['nomineeId'].invalid && purchaseForm.controls['nomineeId'].touched ? 'is-invalid':''" class="form-select" formControlName="nomineeId" name="nomineeId">
+                            <option selected value="">select here</option>
+                            <ng-container *ngFor="let nominee of nominees">
+                                <option [value]="nominee.nomineeId">{{nominee.name}}</option>
+                            </ng-container>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a value.
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <a class="btn btn-secondary btn-sm" routerLink="/nomineeDetails">Add a nominee</a>
+                    </div>
+                    <div class="my-3">
+                        <label class="form-label">Select Pay Cycle</label>
+                        <select  [ngClass]="purchaseForm.controls['payCycle'].invalid && purchaseForm.controls['payCycle'].touched ? 'is-invalid':''" class="form-select" formControlName="payCycle" name="payCycle">
+                            <option selected value="">select here</option>
+                            <option value="monthly">monthly</option>
+                            <option value="yearly">yearly</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a value.
+                        </div>
+                    </div>
+                    <div *ngFor="let member of familyMembers" style="background-color: rgba(203, 238, 221, 0.48);">
+                        <div *ngIf="policy.subtype == 'family'"  class="my-3 border border-1 rounded p-3" >
+                            <div class="row" >
+                                <div class="col">
+                                    Name: <span class="text-muted">{{ member.name }}</span>
+                                </div>
+                                <div class="col">
+                                    Relationship: <span class="text-muted">{{ member.relationship }}</span>
+                                </div>
+                                
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col">
+                                    Mobile Number: <span class="text-muted">{{ member.mobileNo }}</span>
+                                </div>
+                                <div class="col">
+                                    Id Proof: <span class="text-muted">{{ member.idProof }}</span>
+                                </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col">
+                                    Date of Birth: <span class="text-muted">{{ member.dob }}</span>
+                                </div>
+                                <div class="col d-flex justify-content-end align-item-center">
+                                    <a (click)="removeMember(member.name)" class="btn btn-danger btn-sm">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3" *ngIf="policy.subtype == 'family'">
+                        <a data-bs-toggle="modal" data-bs-target="#addMember" class="btn btn-secondary btn-sm">Add a member</a>
+                    </div>
+    
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit" [disabled]="!purchaseForm.valid"  class="btn btn-success" >Buy now</button>
+                </form>
+            </div>
+            <div class="col-md-5">
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel">{{
+                    modalSuccess ? modalTitle : isBuying ? 'Buying policy...' : 'Error Accured! Try Again' }}</h5>
+                <button type="button" routerLink="/policy" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="modalSuccess" [ngClass]="modalSuccess?'text-success':'text-danger'">
+                {{ modalMsg }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" routerLink="/policy" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addMember" tabindex="-1" aria-labelledby="addMemberLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="fw-bold text-success">Family details</h3>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-family-details></app-family-details>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button"  class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>

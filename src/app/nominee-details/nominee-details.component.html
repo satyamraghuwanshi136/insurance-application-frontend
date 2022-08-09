@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="card m-2" style="width: 100%;">
+        <div class="card-body">
+            <div class="row d-flex align-item-center justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h2 class="fw-bold text-success">Nominee details</h2>
+                </div>
+            </div>
+            <form [formGroup]="nomineeForm" (ngSubmit)="registerNomineeDetails()">
+                <div class="row mt-3">
+                    <div class="col">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text"
+                            [ngClass]="nomineeForm.controls['name'].invalid && nomineeForm.controls['name'].touched ? 'is-invalid':''"
+                            class="form-control" name="name" placeholder="Ronit" formControlName="name" id="name">
+                        <div class="invalid-feedback">
+                            Please enter a name.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="dob" class="form-label">Date of birth</label>
+                        <input type="date"
+                            [ngClass]="nomineeForm.controls['dob'].invalid && nomineeForm.controls['dob'].touched ? 'is-invalid':''"
+                            class="form-control" name="dob" formControlName="dob" id="dob">
+                        <div class="invalid-feedback">
+                            Please enter a Date of birth.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="relationship" class="form-label">Relationship</label>
+                        <input type="text"
+                            [ngClass]="nomineeForm.controls['relationship'].invalid && nomineeForm.controls['relationship'].touched ? 'is-invalid':''"
+                            class="form-control" placeholder="brother" name="relationship" formControlName="relationship" id="relationship">
+                        <div class="invalid-feedback">
+                            Please enter a Relationship.
+                        </div>
+                    </div>
+                    <div class="col">
+                    <label for="idProof" class="form-label">ID Proof (Adhaar Card Number)</label>
+                        <input type="text" minlength="12" maxlength="12"
+                            [ngClass]="nomineeForm.controls['idProof'].invalid && nomineeForm.controls['idProof'].touched ? 'is-invalid':''"
+                            class="form-control" name="idProof" placeholder="adhar card" formControlName="idProof" id="idProof">
+                        <div class="invalid-feedback">
+                            Please enter a valid Adhaar Number.
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="errorMsg !== ''"> 
+                    <div class="fs-6 text-danger">
+                        {{errorMsg}}
+                    </div>
+                 </ng-container>
+                <div class="d-flex justify-content-center m-3">
+                    <button type="submit" [disabled]="!nomineeForm.valid || isCalling" class="btn btn-success">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

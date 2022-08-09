@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center my-3">
+            <div class="lc-block">
+                <h2 class="mb-0 fw-bold">Manage <span class="text-success">Underwriter</span></h2>
+            </div><!-- /lc-block -->
+        </div>
+    </div>
+    <div class="row mt-3 mb-4">
+        <div class="card" style="width: 21rem;">
+            <div class="row no-gutters">
+                <div class="col-4 d-flex align-item-center justify-content-center">
+                    <img class="card-img" src="../../../../assets/images/addPolicy.svg" alt="">
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h4 class="card-title">Add Underwritter</h4>
+                        <a  (click)="addUnderwriter()" class="btn btn-success btn-sm"><i class="bi bi-file-earmark-plus"></i>&nbsp; Add</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mt-4">
+        <h4>All Underwriters</h4>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="table-dark">
+                    <!-- <th scope="col">ID</th> -->
+                    <th scope="col">Id</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let underwriter of underwriters">
+                    <th scope="row">{{ underwriter.userId }}</th>
+                    <td>{{ underwriter.email }}</td>
+                    <td>
+                        <!-- <a (click)="viewUnderwriter(underwriter.userId)" class="btn btn-sm me-2 btn-info" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-eye"></i> view</a> -->
+                        <a (click)="updateUnderwriter(underwriter.userId)" class="btn btn-sm me-2 btn-warning"><i class="bi bi-pen"></i> update</a>
+                        <a  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="deleteUnderwriter(underwriter.userId)" class="btn btn-sm me-2 btn-danger"><i class="bi bi-trash3"></i> delete</a>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <th scope="row">2</th>
+                    <td>name here</td>
+                    <td>email</td>
+                    <td>
+                        <a href="" class="btn btn-sm me-2 btn-info"><i class="bi bi-eye"></i> view</a>
+                        <a href="" class="btn btn-sm me-2 btn-warning"><i class="bi bi-pen"></i> edit</a>
+                        <a href="" class="btn btn-sm me-2 btn-danger"><i class="bi bi-trash3"></i> delete</a>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel">{{ modalSuccess ? 'Deleted successfully': 'Error accured! can not delete try again'}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

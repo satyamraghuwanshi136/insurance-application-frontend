@@ -1,0 +1,186 @@
+<div class="container">
+    <div class="card m-2" style="width: 100%;">
+        <div class="card-body">
+            <div class="row d-flex align-item-center justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h2 class="fw-bold text-success">addtional details </h2>
+                </div>
+            </div>
+            <form [formGroup]="customerForm" (ngSubmit)="registerCustomerDetails()">
+                <div class="row mt-3">
+                    <div class="col">
+                        <label for="nationality" class="form-label">Nationality</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['nationality'].invalid && customerForm.controls['nationality'].touched ? 'is-invalid':''"
+                            class="form-control" name="nationality" placeholder="indian" formControlName="nationality" id="nationality">
+                        <div class="invalid-feedback">
+                            Please enter a nationality.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="occupation" class="form-label">occupation</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['occupation'].invalid && customerForm.controls['occupation'].touched ? 'is-invalid':''"
+                            class="form-control" name="occupation" placeholder="Software engineer" formControlName="occupation" id="occupation">
+                        <div class="invalid-feedback">
+                            Please enter a occupation.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="income" class="form-label">Income(annual)</label>
+                        <input type="number"
+                            [ngClass]="customerForm.controls['income'].invalid && customerForm.controls['income'].touched ? 'is-invalid':''"
+                            class="form-control" name="income" placeholder="Rs 120000" formControlName="income" id="income">
+                        <div class="invalid-feedback">
+                            Please enter a income.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="placeOfBirth" class="form-label">Place of birth</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['placeOfBirth'].invalid && customerForm.controls['placeOfBirth'].touched ? 'is-invalid':''"
+                            class="form-control" name="placeOfBirth" placeholder="Surat" formControlName="placeOfBirth"
+                            id="placeOfBirth">
+                        <div class="invalid-feedback">
+                            Please enter a Place of birth.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="idProof" class="form-label">ID Proof (Adhaar Card Number)</label>
+                        <input type="text" minlength="12" maxlength="12"
+                            [ngClass]="customerForm.controls['idProof'].invalid && customerForm.controls['idProof'].touched ? 'is-invalid':''"
+                            class="form-control" name="idProof" placeholder="adhar card" formControlName="idProof" id="idProof">
+                        <div class="invalid-feedback">
+                            Please enter a valid Adhaar Number.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="dob" class="form-label">Date of birth</label>
+                        <input type="date"
+                            [ngClass]="customerForm.controls['dob'].invalid && customerForm.controls['dob'].touched ? 'is-invalid':''"
+                            class="form-control" name="dob" formControlName="dob" id="dob">
+                        <div class="invalid-feedback">
+                            Please enter a Date of birth.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="coName" class="form-label">Care of name</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['coName'].invalid && customerForm.controls['coName'].touched ? 'is-invalid':''"
+                            class="form-control" placeholder="Meet" name="coName" formControlName="coName" id="coName">
+                        <div class="invalid-feedback">
+                            Please enter a Care of name.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="relationship" class="form-label">Relationship</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['relationship'].invalid && customerForm.controls['relationship'].touched ? 'is-invalid':''"
+                            class="form-control" placeholder="brother" name="relationship" formControlName="relationship" id="relationship">
+                        <div class="invalid-feedback">
+                            Please enter a Relationship.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="gender" class="form-label">Gender</label>
+                        <div class="d-flex justify-content-start">
+                            <span class="form-check">
+                                <input type="radio" class="form-check-input" id="male" value="m" formControlName="gender" checked>
+                                <label class="form-check-label" for="male">
+                                    Male
+                                </label>
+                            </span>
+                            <span class="form-check ms-2">
+                                <input type="radio" class="form-check-input" id="female" value="f" formControlName="gender">
+                                <label class="form-check-label" for="female">
+                                    Female
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="street" class="form-label">Street</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['street'].invalid && customerForm.controls['street'].touched ? 'is-invalid':''"
+                            class="form-control" name="street" placeholder="32, emporis galaxy" formControlName="street" id="street">
+                        <div class="invalid-feedback">
+                            Please enter a Street.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="locality" class="form-label">Locality</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['locality'].invalid && customerForm.controls['locality'].touched ? 'is-invalid':''"
+                            class="form-control" name="locality" placeholder="utran" formControlName="locality" id="locality">
+                        <div class="invalid-feedback">
+                            Please enter a Locality.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="area" class="form-label">area</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['area'].invalid && customerForm.controls['area'].touched ? 'is-invalid':''"
+                            class="form-control" name="area" placeholder="mota varachha" formControlName="area" id="area">
+                        <div class="invalid-feedback">
+                            Please enter a area.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="pincode" class="form-label">City</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['city'].invalid && customerForm.controls['city'].touched ? 'is-invalid':''"
+                            class="form-control" name="city" placeholder="surat" formControlName="city" id="city">
+                        <div class="invalid-feedback">
+                            Please enter a City.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['state'].invalid && customerForm.controls['state'].touched ? 'is-invalid':''"
+                            class="form-control" name="state" placeholder="Gujarat"  formControlName="state" id="state">
+                        <div class="invalid-feedback">
+                            Please enter a State.
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <label for="pincode" class="form-label">Pincode</label>
+                        <input type="text"
+                            [ngClass]="customerForm.controls['pincode'].invalid && customerForm.controls['pincode'].touched ? 'is-invalid':''"
+                            class="form-control" name="pincode" placeholder="394105" formControlName="pincode" id="pincode">
+                        <div class="invalid-feedback">
+                            Please enter a pincode.
+                        </div>
+                    </div>
+                    <div class="col">
+                    
+                    </div>
+                </div>
+                <ng-container *ngIf="errorMsg !== ''"> 
+                    <div class="fs-6 text-danger">
+                        {{errorMsg}}
+                    </div>
+                 </ng-container>
+                <div class="d-flex justify-content-center m-3">
+                    <button type="submit" [disabled]="!customerForm.valid || isCalling || nextEnable" class="btn btn-success">Submit</button>
+                    <button type="button" [disabled]="!nextEnable" (click)="next()" class="btn btn-secondary ms-1">Next</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

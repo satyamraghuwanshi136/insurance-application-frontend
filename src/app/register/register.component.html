@@ -1,0 +1,79 @@
+<div class="pb-2"></div>
+<div class="container-fluid row d-flex align-item-center justify-content-center mb-4">
+    <div class="col-md-6 mt-4 p-4 shadow bg-white border border-1">
+        <div class="row d-flex align-item-center justify-content-center">
+            <div class="col-md-6 text-center">
+                <h2 class="fw-bold">Register <span class="text-success">here</span></h2>
+            </div>
+        </div>
+        <div class="row d-flex align-item-center justify-content-center mt-3">
+            <div class="col-md-8">
+                <form [formGroup]="registerForm" (ngSubmit)="registerCustomer()">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text"
+                            [ngClass]="registerForm.controls['name'].invalid && registerForm.controls['name'].touched ? 'is-invalid':''"
+                            class="form-control" name="name" formControlName="name" id="name">
+                        <div class="invalid-feedback">
+                            Please enter a name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact</label>
+                        <input type="tel" maxlength="10" class="form-control"
+                            [ngClass]="registerForm.controls['contact'].invalid && registerForm.controls['contact'].touched ? 'is-invalid':''"
+                            formControlName="contact" name="contact" id="contact">
+                        <div class="invalid-feedback">
+                            Please enter valid contact number.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" class="form-control"
+                            [ngClass]="registerForm.controls['email'].invalid && registerForm.controls['email'].touched ? 'is-invalid':''"
+                            formControlName="email" name="email" id="exampleInputEmail1">
+                        <div class="invalid-feedback">
+                            Please provide a valid email.
+                        </div>
+                        <div class="text-danger" *ngIf="uniqueEmail && registerForm.controls['email'].touched" >{{'Email Already Exists'}}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control"
+                            [ngClass]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched ? 'is-invalid':''"
+                            formControlName="password" name="password" id="exampleInputPassword1">
+                        <div class="invalid-feedback">
+                            Please enter a password.
+                        </div>
+                    </div>
+                    <ng-container *ngIf="errorMsg !== ''"> 
+                        <div class="fs-6 text-danger">
+                            {{errorMsg}}
+                        </div>
+                     </ng-container>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit" [disabled]="!registerForm.valid || isRegistering || uniqueEmail"
+                        class="btn btn-success w-100">Register</button>
+                    <div class="">
+                        <span class="form-text">
+                            Already a user ! <a routerLink="/login" class="btn btn-link">Sign in</a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" [ngClass]="modalSuccess?'text-success':'text-danger'" id="exampleModalLabel">{{ modalSuccess ? 'Registration Successfull': modalFailure ? 'Error Accured! Try Again' : 'Registering...'}}</h5>
+          <button type="button" routerLink="/login" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" routerLink="/login" class="btn btn-secondary" data-bs-dismiss="modal">Log in</button>
+        </div>
+      </div>
+    </div>
+  </div>
