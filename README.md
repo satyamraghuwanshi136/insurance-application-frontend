@@ -5,6 +5,3 @@
  - *Technologies used in this project are **Angular 8***
 
 
-## Here is the link to working video
-
-https://drive.google.com/file/d/1XFehpXqlsqGCwFzBKVZhfuKu-uUyMSM0/view?usp=sharing
